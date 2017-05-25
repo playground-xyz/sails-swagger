@@ -1,11 +1,9 @@
-import assert from 'assert'
-import _ from 'lodash'
-import xfmr from '../lib/xfmr'
-import pkg from '../package'
-
+const assert = require('assert');
+const _ = require('lodash');
+const xfmr = require('../lib/xfmr');
+const pkg = require('../package');
 
 describe('xfmr', () => {
-
 
     describe('#getSwagger', () => {
         it('should generate complete and correct Swagger doc', () => {

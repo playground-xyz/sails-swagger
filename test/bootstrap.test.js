@@ -1,6 +1,5 @@
-import path from 'path'
-import _ from 'lodash'
-import Sails from 'sails'
+const path = require('path');
+const Sails = require('sails');
 
 const config = {
   appPath: path.resolve(__dirname, '..'),
@@ -25,3 +24,4 @@ before(function (done) {
 after(function () {
   global.sails.lower();
 });
+

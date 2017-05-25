@@ -1,15 +1,14 @@
 {
   "name": "sails-swagger",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "swagger.io integration for sails.js",
-  "main": "dist/api/hooks/swagger/index.js",
+  "main": "api/hooks/swagger/index.js",
   "scripts": {
-    "test": "gulp && mocha --reporter spec --compilers js:babel/register",
-    "prepublish": "gulp"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tjwebb/sails-swagger.git"
+    "url": "https://github.com/playground-xyz/sails-swagger.git"
   },
   "keywords": [
     "sails",
@@ -23,21 +22,17 @@
   "author": "Travis Webb <me@traviswebb.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjwebb/sails-swagger/issues"
+    "url": "https://github.com/playground-xyz/sails-swagger/issues"
   },
-  "homepage": "https://github.com/tjwebb/sails-swagger",
+  "homepage": "https://github.com/playground-xyz/sails-swagger",
   "devDependencies": {
-    "babel": "^5.8.21",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.2.1",
     "mocha": "^2.2.5",
     "sails": "balderdashy/sails",
     "sails-disk": "^0.10.8"
   },
   "dependencies": {
     "hoek": "^2.14.0",
-    "lodash": "^3.10.1",
-    "marlinspike": "^0.12.10",
+    "lodash": "^4.12.0",
     "pluralize": "^1.2.1"
   },
   "sails": {
