@@ -21,10 +21,22 @@ module.exports = function swaggerHook(sails) {
     initialize (next) {
       const doc = xfmr.getSwagger(sails, sails.config.swagger.pkg);
 
-      sails.config.swagger = doc;
+      sails.config.swagger.doc = doc;
       console.log(JSON.stringify(doc, null, 2));
 
       next();
+    },
+
+    routes: {
+      after: {
+        'get /swagger/doc': function (req, res) {
+          return res.status(200).send(sails.config.swagger.doc);
+        },
+        'get /swagger/ui': function (req, res) {
+          let docUrl = req.protocol + '://' + req.get('Host') + '/swagger/doc'
+          res.redirect(sails.config.swagger.ui.url + '?doc=' + encodeURIComponent(docUrl))
+        }
+      }
     }
   };
 }
