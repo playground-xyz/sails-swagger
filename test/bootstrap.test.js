@@ -2,7 +2,7 @@ const path = require('path');
 const Sails = require('sails');
 
 const config = {
-  appPath: path.resolve(__dirname, '..'),
+  appPath: path.resolve(__dirname, './fixture'),
   hooks: { grunt: false },
   log: { level: 'silent' },
   models: { migrate: 'drop' },

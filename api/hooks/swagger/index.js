@@ -22,7 +22,6 @@ module.exports = function swaggerHook(sails) {
       const doc = xfmr.getSwagger(sails, sails.config.swagger.pkg);
 
       sails.config.swagger.doc = doc;
-      console.log(JSON.stringify(doc, null, 2));
 
       next();
     },
@@ -34,7 +33,7 @@ module.exports = function swaggerHook(sails) {
         },
         'get /swagger/ui': function (req, res) {
           let docUrl = req.protocol + '://' + req.get('Host') + '/swagger/doc'
-          res.redirect(sails.config.swagger.ui.url + '?doc=' + encodeURIComponent(docUrl))
+          res.redirect(sails.config.swagger.ui.url + '?url=' + encodeURIComponent(docUrl))
         }
       }
     }

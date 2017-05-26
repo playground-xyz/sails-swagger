@@ -27,7 +27,7 @@
   "homepage": "https://github.com/playground-xyz/sails-swagger",
   "devDependencies": {
     "mocha": "^2.2.5",
-    "sails": "balderdashy/sails",
+    "sails": "1.0.0-35",
     "sails-disk": "^0.10.8"
   },
   "dependencies": {
