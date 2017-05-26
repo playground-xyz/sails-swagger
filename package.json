@@ -1,5 +1,5 @@
 {
-  "name": "sails-swagger",
+  "name": "@playgroundxyz/sails-swagger",
   "version": "1.0.0",
   "description": "swagger.io integration for sails.js",
   "main": "api/hooks/swagger/index.js",
