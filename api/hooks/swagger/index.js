@@ -1,5 +1,21 @@
 const xfmr = require('../../../lib/xfmr');
 
+const UI_MARKUP = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playground XYZ API Docs</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+    <redoc spec-url='{{SPEC_URL}}'></redoc>
+    <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"> </script>
+  </body>
+</html>
+`;
+
 module.exports = function swaggerHook(sails) {
 
   return {
@@ -10,9 +26,6 @@ module.exports = function swaggerHook(sails) {
             name: 'No package information',
             description: 'You should set sails.config.swagger.pkg to retrieve the content of the package.json file',
             version: '0.0.0'
-          },
-          ui: {
-            url: 'http://localhost:8080/'
           }
         },
       };
@@ -20,20 +33,18 @@ module.exports = function swaggerHook(sails) {
 
     initialize (next) {
       const doc = xfmr.getSwagger(sails, sails.config.swagger.pkg);
-
-      sails.config.swagger.doc = doc;
-
+      sails.config.swaggerDoc = doc;
       next();
     },
 
     routes: {
       after: {
         'get /swagger/doc': function (req, res) {
-          return res.status(200).send(sails.config.swagger.doc);
+          return res.status(200).send(sails.config.swaggerDoc);
         },
         'get /swagger/ui': function (req, res) {
           let docUrl = req.protocol + '://' + req.get('Host') + '/swagger/doc'
-          res.redirect(sails.config.swagger.ui.url + '?url=' + encodeURIComponent(docUrl))
+          res.status(200).send(UI_MARKUP.replace('{{SPEC_URL}}', docUrl));
         }
       }
     }
