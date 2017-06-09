@@ -43,7 +43,11 @@ module.exports = function swaggerHook(sails) {
           return res.status(200).send(sails.config.swaggerDoc);
         },
         'get /swagger/ui': function (req, res) {
-          let docUrl = req.protocol + '://' + req.get('Host') + '/swagger/doc'
+          let docUrl = req.protocol + '://' + req.get('Host');
+          if (sails.config.swagger.basePath) {
+            docUrl = docUrl + sails.config.swagger.basePath;
+          }
+          docUrl = docUrl + '/swagger/doc'
           res.status(200).send(UI_MARKUP.replace('{{SPEC_URL}}', docUrl));
         }
       }
